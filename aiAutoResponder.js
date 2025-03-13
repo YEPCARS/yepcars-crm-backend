@@ -3,7 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5005;
+const PORT = process.env.PORT;
+
+if (!PORT) {
+  throw new Error("PORT environment variable not set!");
+}
 
 app.use(cors());
 app.use(bodyParser.json());
